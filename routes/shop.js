@@ -1,4 +1,8 @@
+const path = require('path');
+
 const express = require('express');
+
+const rootdir = require('../util/path');
 
 const router = express.Router();
 
@@ -7,9 +11,9 @@ router.use('/users', (req, res, next) => {
     res.send('<h1>Welcone to Express JS Users Page</h1>');
 });
 
-router.use('/express', (req, res, next) => {
+router.use('/', (req, res, next) => {
     console.log("In the another Middleware");
-    res.send('<h1>Welcone to Express JS</h1>');
+    res.sendFile(path.join(rootdir, 'views', 'shop.html'));
 })
 
 module.exports = router
